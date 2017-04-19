@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="MyTaskManagerLibrary.FrontEnd.TestTaskView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyTaskManagerLibrary.FrontEnd.MyControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark">
+
+    <Page.BottomAppBar>
+        <CommandBar Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        RelativePanel.AlignRightWithPanel="True"
+                        ClosedDisplayMode="Compact" 
+                        HorizontalAlignment="Stretch"
+                            >
+            <AppBarButton Icon="Add"
+                          Label="Add New Task" 
+                          Name="AddNewTaskButton"
+                          Click="AddNewTaskButton_Click"
+                          />
+            <AppBarButton Icon="Edit" 
+                          Label="Edit Task"
+                          Name="EditTaskButton"
+                          Click="EditTaskButton_Click"
+                          />
+            <AppBarButton Icon="Delete"
+                          Label="Dalete Task"
+                          Name="DeleteButton" 
+                          Click="DeleteButton_Click"
+                          />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <local:TaskViewControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </Grid>
+</Page>

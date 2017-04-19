@@ -1,0 +1,267 @@
+﻿<UserControl
+    x:Class="MyTaskManagerLibrary.FrontEnd.MyTaskControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyTaskManagerLibrary.FrontEnd"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Height="454" 
+    Width="717"
+    Background="Black">
+    <UserControl.Resources>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,10,5,5"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="LineHeight" Value="24" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10,10,60,5"/>
+        </Style>
+
+        <Style TargetType="RichEditBox">
+            <Setter Property="Margin" Value="10,10,60,5"/>
+            <Setter Property="MinHeight" Value="100" />
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="Margin" Value="10,10,60,10"/>
+        </Style>
+
+        <Style TargetType="TimePicker">
+            <Setter Property="Margin" Value="10,10,60,10"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="10,10,60,10"/>
+            <Setter Property="Width" Value="100" />
+        </Style>
+
+    </UserControl.Resources>
+<ScrollViewer VerticalScrollMode="Auto" HorizontalScrollMode="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"  Name="Title" 
+                   Text="Create new Task" 
+                   FontSize="36"
+                   HorizontalAlignment="Right"
+                   Margin="0,20,100,40"
+                   />
+        
+        <Grid Grid.Row="1" 
+>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Lables-->
+            <TextBlock Grid.Column="0" Grid.Row = "0" Name="NameTask" Text="Name:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "1"  Name="NumbeTask" Text="Number:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "2"  Name="ShortDescriptionTask" Text="Short Description:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "3"  Name="DescriptionTask" Text="Description:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "4"  Name="StartDateTask" Text="Start Date:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "5"  Name="EndDateTask" Text="End Date:"/>
+            <TextBlock Grid.Column="0" Grid.Row = "6"  Name="ParentTask" Text="Parent Task:"/>
+
+            
+            <!--Edits-->
+            <TextBox Grid.Column="1" 
+                     Grid.Row = "0"  
+                     Name="SetNameTask" 
+                     Text="d"
+                     FontSize="20"
+                     InputScope="Text"
+                     IsSpellCheckEnabled="True"
+                     LostFocus="SetNameTask_LostFocus"/>
+
+            <TextBox Grid.Column="1" 
+                     Grid.Row = "1"  
+                     Name="SetNumbeTask" 
+                     Text="d"
+                     FontSize="18"
+                     InputScope="Number"
+                     LostFocus="SetNumbeTask_LostFocus"/>
+
+            <TextBox Grid.Column="1"
+                     Grid.Row = "2" 
+                     Name="SetShortDescriptionTask" 
+                     Text="d"
+                     FontSize="16"
+                     InputScope="Text"
+                     IsSpellCheckEnabled="True"
+                     LostFocus="SetShortDescriptionTask_LostFocus"/>
+            <RichEditBox Grid.Column="1" 
+                         Grid.Row = "3" 
+                         Name="SetDescriptionTask" 
+                         FontSize="14"
+                         InputScope="Text"
+                         TextWrapping="WrapWholeWords"
+                         LostFocus="SetDescriptionTask_LostFocus"/>
+            <StackPanel Grid.Column="1" Grid.Row = "4" Grid.RowSpan="7">
+                <DatePicker Name="SetDPStartDateTask" 
+                             LostFocus="SetDPStartDateTask_LostFocus"/>
+
+                <TimePicker Name="SetTPStartDateTask"
+                             Margin="10,10,0,10" 
+                             Width="296"
+                             LostFocus="SetTPStartDateTask_LostFocus"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row = "5">
+                <DatePicker Name="SetDPEndDateTask" 
+                            Margin="10,10,0,10" 
+                            Width="242" 
+                            LostFocus="SetDPEndDateTask_LostFocus"/>
+
+                <TimePicker Name="SetTPEndDateTask" 
+                            Margin="10,10,0,10" 
+                            Width="296"
+                            LostFocus="SetTPEndDateTask_LostFocus"/>
+            </StackPanel>
+            <ComboBox Grid.Column="1" Grid.Row = "6" 
+                      Name="SetParent" HorizontalAlignment="Stretch" 
+                      Width="Auto"
+                      SelectionChanged="SetParent_SelectionChanged"/>
+
+
+            <!--Switches-->
+            <ToggleSwitch Grid.Column="2"
+                          Grid.Row = "0" 
+                          Name="SwitchNameTask"
+                          OffContent="Off" 
+                          OnContent="On" 
+                          Header="Name"
+                          IsOn="False"
+                          Toggled="Switch_Toggled"
+                          Tag="0"
+                          />
+            <ToggleSwitch Grid.Column="2" 
+                          Grid.Row = "1" 
+                          Name="SwitcNumbeTask" 
+                          OffContent="Off" 
+                          OnContent="On" 
+                          Header="Number"
+                          Toggled="Switch_Toggled"
+                          Tag="1"
+                          />
+            <ToggleSwitch Grid.Column="2" 
+                          Grid.Row = "2" 
+                          Name="SwitchShortDescriptionTask" 
+                          OffContent="Off" 
+                          OnContent="On" 
+                         
+                          Header="Switch Short Description"
+                          Tag="2"
+                          Toggled="Switch_Toggled"
+                          />
+            <ToggleSwitch Grid.Column="2" 
+                          Grid.Row = "3" 
+                          Name="SwitchDescriptionTask" 
+                          OffContent="Off" 
+                          OnContent="On" 
+                          Header="Switch Description"
+                          Toggled="Switch_Toggled"
+                          Tag="3"
+                          />
+
+            <StackPanel Grid.Column="2" Grid.Row = "4" >
+                <ToggleSwitch Name="SwitchDPStartDateTask" 
+                                  OffContent="Off" 
+                                  OnContent="On" 
+                                  Header="Switch Start Date"
+                                  Toggled="Switch_Toggled"
+                                  Tag="4"/>
+                <ToggleSwitch Name="SwithcTPDateTask" 
+                                  OffContent="Off" 
+                                  OnContent="On" 
+                                  Header="Switch Start Time"
+                                  Toggled="Switch_Toggled"
+                                  Tag="5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Grid.Row = "5" >
+                <ToggleSwitch Name="SwitchDPEndDateTask" 
+                                  OffContent="Off" 
+                                  OnContent="On" 
+                                  Header="Switch End Date"
+                                  Toggled="Switch_Toggled"
+                                  Tag="6"/>
+                <ToggleSwitch Name="SwitchTPEndDateTask" 
+                                  OffContent="Off" 
+                                  OnContent="On" 
+                                  Header="Switch End Time"
+                                  Toggled="Switch_Toggled"
+                                  Tag="7"/>
+            </StackPanel>
+
+
+            <ToggleSwitch Grid.Column="2" 
+                          Grid.Row = "6" 
+                          Name="SwitchCBParent" 
+                          OffContent="Off" 
+                          OnContent="On" 
+                          Header="Switch Parent"
+                          Toggled="Switch_Toggled"
+                          Tag="8"
+                          />
+        </Grid>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2" >
+            <Button Name="CreateButton" 
+                    Click="CreateButton_Click" Margin="85,0,0,0" >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                                   FontSize="24"
+                                   Text="&#xE105;"
+                                   Margin="2,6,5,2"
+                                   />
+                        <TextBlock 
+                                   FontSize="24"
+                                   Text="Create"
+                                   Margin="2,2,5,2"
+                                   />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Name="CancelButton" 
+                    Click="CancelButton_Click" Margin="292,0,0,0" HorizontalAlignment="Right" >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                                   FontSize="24"
+                                   Text="&#xE10A;"
+                                   Margin="2,6,5,2"
+                                   />
+                        <TextBlock 
+                                   FontSize="24"
+                                   Text="Cancel"
+                                   Margin="2,2,5,2"
+                                   />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+
+</UserControl>

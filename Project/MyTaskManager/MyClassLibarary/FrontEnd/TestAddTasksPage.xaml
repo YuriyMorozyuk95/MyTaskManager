@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MyTaskManagerLibrary.FrontEnd.AddTasksPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyTaskManagerLibrary.FrontEnd.MyControl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Horizontal">
+            <local:AddMyTask x:Name="AddMyTask"/>
+            <StackPanel>
+                <local:MyTaskItem x:Name="ShowTask" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="process value" />
+                    <TextBox Name="setProcessValue" />
+                    <Button Content="+" Click="Button_Click_1" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="process max value" />
+                    <TextBox Name="setMaxProcessValue"/>
+
+                </StackPanel>
+                <Button Content="SetValueProcessBar" Click="Button_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Name="CreateAndShow" 
+                Content="Create And Show" 
+                Click="CreateAndShow_Click" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Center" />
+    </Grid>
+</Page>
